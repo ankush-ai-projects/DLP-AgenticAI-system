@@ -1,0 +1,57 @@
+[
+  {
+    "id": "employee_doc_1",
+    "text": "Name: Rahul Sharma\nEmail: rahul.sharma@gmail.com\nPhone: 9876543210\nAadhaar: 2345 6789 0123\nPAN: ABCDE1234F\nCredit Card: 4111111111111111",
+    "expected_entity_types": ["EMAIL", "PHONE", "AADHAAR", "PAN", "CREDIT_CARD"]
+  },
+  {
+    "id": "employee_doc_2",
+    "text": "Name: Priya Verma\nEmail: priya.verma@yahoo.com\nPhone: 8765432109\nAadhaar: 3456 7890 1234\nPAN: XYZAB5678C",
+    "expected_entity_types": ["EMAIL", "PHONE", "AADHAAR", "PAN"]
+  },
+  {
+    "id": "salary_note",
+    "text": "Rahul - Card ending 5060\nPriya - Card 5500005555555559",
+    "expected_entity_types": ["CREDIT_CARD"]
+  },
+  {
+    "id": "csv_row_amit",
+    "text": "Amit Kumar,amit.k@gmail.com,9123456789,2234 5678 9012,ABCDE1234F,4111111111111111",
+    "expected_entity_types": ["EMAIL", "PHONE", "AADHAAR", "PAN", "CREDIT_CARD"]
+  },
+  {
+    "id": "csv_row_sneha",
+    "text": "Sneha Patel,sneha.p@outlook.com,8234567890,3345 6789 0123,XYZPQ5678M,5500005555555559",
+    "expected_entity_types": ["EMAIL", "PHONE", "AADHAAR", "PAN", "CREDIT_CARD"]
+  },
+  {
+    "id": "csv_row_rajesh",
+    "text": "Rajesh Singh,rajesh.singh@company.com,7345678901,4456 7890 1234,LMNOP9012R,378282246310005",
+    "expected_entity_types": ["EMAIL", "PHONE", "AADHAAR", "PAN", "CREDIT_CARD"]
+  },
+  {
+    "id": "no_pii_sentence",
+    "text": "Quarterly report summary: revenue grew and headcount stayed flat this cycle.",
+    "expected_entity_types": []
+  },
+  {
+    "id": "email_only",
+    "text": "Please reach out to support@example.com if you have questions.",
+    "expected_entity_types": ["EMAIL"]
+  },
+  {
+    "id": "phone_only",
+    "text": "Contact number on file: 9988776655",
+    "expected_entity_types": ["PHONE"]
+  },
+  {
+    "id": "pan_only",
+    "text": "Tax reference number: QRSTU1234V",
+    "expected_entity_types": ["PAN"]
+  },
+  {
+    "id": "invalid_luhn_card_should_be_rejected",
+    "text": "Reference code on the form: 4246537084905060 (not a real card).",
+    "expected_entity_types": []
+  }
+]

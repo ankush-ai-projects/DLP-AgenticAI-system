@@ -1,0 +1,325 @@
+.scan-status-page {
+  min-height: 100vh;
+  padding: 28px;
+  color: #e9f8ff;
+  background: #07111f;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.status-header,
+.status-header__title,
+.table-title,
+.progress-label,
+.action-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.status-header {
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.status-header__title {
+  gap: 18px;
+}
+
+.status-header h1 {
+  margin: 0;
+  color: #57e6ff;
+}
+
+.status-header button {
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 8px;
+  color: #041019;
+  background: #18b8d7;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(145px, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.metric-card {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid #214b60;
+  border-radius: 14px;
+  background: #0d1b2d;
+}
+
+.metric-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: #123349;
+  place-items: center;
+  font-size: 21px;
+}
+
+.metric-card strong {
+  display: block;
+  font-size: 25px;
+}
+
+.metric-card small,
+.status-table-card small {
+  display: block;
+  margin-top: 4px;
+  color: #99afbd;
+}
+
+.metric-card.green .metric-icon {
+  color: #4ee28b;
+  background: #173f32;
+}
+
+.metric-card.amber .metric-icon {
+  color: #ffcb55;
+  background: #493a17;
+}
+
+.metric-card.purple .metric-icon {
+  color: #b899ff;
+  background: #34245b;
+}
+
+.metric-card.red .metric-icon {
+  color: #ff758b;
+  background: #4c202c;
+}
+
+.status-table-card {
+  overflow: hidden;
+  border: 1px solid #1f6073;
+  border-radius: 15px;
+  background: #0d1b2d;
+}
+
+.table-title {
+  justify-content: space-between;
+  padding: 20px 22px;
+  border-bottom: 1px solid #1d4052;
+}
+
+.table-title h2 {
+  margin: 0;
+}
+
+.table-title span {
+  padding: 7px 12px;
+  border-radius: 20px;
+  color: #b8d9e7;
+  background: #132a3c;
+}
+
+.table-scroll {
+  overflow: auto;
+}
+
+.status-table-card table {
+  width: 100%;
+  min-width: 1280px;
+  border-collapse: collapse;
+}
+
+.status-table-card th,
+.status-table-card td {
+  padding: 16px 14px;
+  border-bottom: 1px solid #1a3445;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.status-table-card th {
+  color: #8cb1c3;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.status-table-card td > strong {
+  display: block;
+}
+
+.goal-text {
+  display: block;
+  overflow: hidden;
+  max-width: 300px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.status-pill {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.status-pill i {
+  font-style: normal;
+}
+
+.status-pill.amber {
+  color: #ffd46e;
+  background: #513a12;
+}
+
+.status-pill.green {
+  color: #53e38e;
+  background: #123d2b;
+}
+
+.status-pill.blue {
+  color: #61d8ff;
+  background: #123b53;
+}
+
+.status-pill.purple {
+  color: #c2a8ff;
+  background: #342257;
+}
+
+.status-pill.red {
+  color: #ff7890;
+  background: #4d1c29;
+}
+
+.progress-wrap {
+  min-width: 180px;
+}
+
+.progress-label {
+  justify-content: space-between;
+  margin-bottom: 7px;
+  font-size: 12px;
+}
+
+.progress-track {
+  overflow: hidden;
+  height: 8px;
+  border-radius: 20px;
+  background: #172d3b;
+}
+
+.progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #08aeea, #27f0d0);
+  transition: width 450ms ease;
+}
+
+.found-count {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #ffffff;
+  background: #d63854;
+}
+
+.scan-activity {
+  display: grid;
+  min-width: 210px;
+  margin: 0;
+  gap: 7px;
+}
+
+.scan-activity div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.scan-activity dt {
+  color: #8faaba;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.scan-activity dd {
+  margin: 0;
+  color: #e8fbff;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.action-buttons {
+  gap: 8px;
+}
+
+.action-buttons button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #26cde6;
+  border-radius: 7px;
+  color: #76eeff;
+  background: #0a2638;
+  cursor: pointer;
+}
+
+.action-buttons button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.row-error {
+  max-width: 230px;
+  color: #ff8295 !important;
+}
+
+.status-error {
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid #ff6b81;
+  border-radius: 8px;
+  color: #ffdce2;
+  background: #52202a;
+}
+
+.empty-state {
+  padding: 60px;
+  color: #8ea9b7;
+  text-align: center;
+}
+
+@media (max-width: 1050px) {
+  .metric-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .scan-status-page {
+    padding: 16px;
+  }
+
+  .status-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .status-header__title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .metric-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,14 @@
+.App {
+  min-height: 100vh;
+  background: #0a0e27;
+}
+
+.protected-app-shell {
+  min-height: 100vh;
+  background: #061222;
+}
+
+.protected-app-content {
+  min-height: calc(100vh - var(--premium-header-height, 72px));
+  padding-top: var(--premium-header-height, 72px);
+}

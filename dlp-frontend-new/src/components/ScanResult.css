@@ -1,0 +1,355 @@
+.scan-result-page {
+  min-height: 100vh;
+  padding: 28px;
+  color: #e9f8ff;
+  background: #07111f;
+  font-family: Inter, Arial, sans-serif;
+  /* Without this, a wide child (like the findings table) can stretch the
+     whole page wider than the viewport instead of scrolling internally --
+     that's what was pushing the Data Location column off-screen with no
+     visible scrollbar. */
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.scan-result-page * {
+  box-sizing: border-box;
+}
+
+.result-header,
+.result-header__title,
+.approval-banner {
+  display: flex;
+  align-items: center;
+}
+
+.result-header {
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.result-header__title {
+  gap: 18px;
+}
+
+.result-header button {
+  padding: 11px 15px;
+  border: 0;
+  border-radius: 8px;
+  color: #041019;
+  background: #18b8d7;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.result-header h1 {
+  margin: 0 0 4px;
+  color: #57e6ff;
+}
+
+.result-header p {
+  margin: 0;
+  color: #8ba7b7;
+}
+
+.result-status {
+  padding: 9px 14px;
+  border-radius: 20px;
+  color: #61d8ff;
+  background: #123b53;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.result-status.completed {
+  color: #53e38e;
+  background: #123d2b;
+}
+
+.result-status.failed {
+  color: #ff7890;
+  background: #4d1c29;
+}
+
+.result-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.result-metrics > div,
+.result-panel {
+  padding: 20px;
+  border: 1px solid #1f6073;
+  border-radius: 14px;
+  background: #0d1b2d;
+}
+
+.result-metrics span {
+  display: block;
+  color: #8faaba;
+  font-size: 13px;
+}
+
+.result-metrics strong {
+  display: block;
+  margin-top: 8px;
+  color: #57e6ff;
+  font-size: 27px;
+  text-transform: capitalize;
+}
+
+.result-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.result-panel h2 {
+  margin-top: 0;
+}
+
+.entity-list > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #1b3a4c;
+}
+
+.entity-list strong {
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: #67eaff;
+  background: #173b4d;
+}
+
+.tool-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-flow span {
+  padding: 7px 10px;
+  border: 1px solid #225d75;
+  border-radius: 20px;
+  background: #12364b;
+  text-transform: capitalize;
+}
+
+.planner-source,
+.muted {
+  color: #8faaba;
+}
+
+.findings-panel {
+  margin-bottom: 20px;
+}
+
+.findings-table {
+  overflow: auto;
+  max-height: 520px;
+  width: 100%;
+  max-width: 100%;
+  /* This div is now the horizontal-scroll boundary for the table --
+     without an explicit width, it just grows to fit the table's 850px
+     min-width and lets the whole PAGE overflow instead of scrolling
+     internally. */
+}
+
+.findings-table table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+}
+
+.findings-table th,
+.findings-table td {
+  padding: 13px;
+  border-bottom: 1px solid #1a3445;
+  text-align: left;
+}
+
+.findings-table th {
+  color: #8fb4c5;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.findings-table code {
+  color: #75edff;
+}
+
+.risk {
+  padding: 4px 8px;
+  border-radius: 14px;
+  background: #19354a;
+}
+
+.risk.high,
+.risk.critical {
+  color: #ff8497;
+  background: #4d1c29;
+}
+
+.risk.medium {
+  color: #ffd36d;
+  background: #493a17;
+}
+
+.approval-banner {
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 18px 20px;
+  border: 1px solid #7356bb;
+  border-radius: 14px;
+  background: #241c43;
+}
+
+.approval-banner p {
+  margin: 5px 0 0;
+  color: #bbaedd;
+}
+
+.approval-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.approval-actions button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 7px;
+  background: #34d88b;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.approval-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.approval-actions .reject {
+  color: #ffffff;
+  background: #ff5c72;
+}
+
+.result-panel pre {
+  overflow: auto;
+  max-height: 320px;
+  padding: 14px;
+  border-radius: 8px;
+  background: #050c15;
+  white-space: pre-wrap;
+}
+
+.result-error {
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid #ff6b81;
+  border-radius: 8px;
+  color: #ffdce2;
+  background: #52202a;
+}
+
+.result-loading {
+  display: grid;
+  min-height: 70vh;
+  color: #57e6ff;
+  font-size: 24px;
+  place-items: center;
+}
+
+@media (max-width: 800px) {
+  .scan-result-page {
+    padding: 16px;
+  }
+
+  .result-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .result-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .result-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .result-header__title {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .approval-banner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* --- Findings table: checkboxes, toolbar, data-type badges --- */
+.findings-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.remediation-trigger {
+  background: #1c2a4a;
+  border: 1px solid #2f4272;
+  color: #7dd3fc;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+.remediation-trigger:hover:not(:disabled) {
+  background: #24365f;
+}
+
+.remediation-trigger:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.select-col {
+  width: 36px;
+  text-align: center;
+}
+
+.findings-table tr.row-selected {
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.data-type-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  margin-right: 6px;
+}
+
+.data-type-badge.pci {
+  color: #f0b429;
+}
+
+.data-type-badge.pii {
+  color: #38bdf8;
+}
+
+.risk-mini {
+  font-size: 12px;
+  color: #94a3b8;
+}

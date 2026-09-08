@@ -1,0 +1,300 @@
+.agentic-console {
+  min-height: 100vh;
+  padding: 28px;
+  color: #e7f7ff;
+  background: #07111f;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.agentic-console__header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.agentic-console__header h1 {
+  margin: 0;
+  color: #57e6ff;
+}
+
+.agentic-console__header button,
+.console-card button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 7px;
+  color: #041019;
+  background: #18b8d7;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.console-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.console-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid #1f6073;
+  border-radius: 14px;
+  background: #0d1b2d;
+}
+
+.console-card h2 {
+  margin: 0 0 6px;
+}
+
+.console-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #bcd8e5;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.console-card input,
+.console-card select,
+.console-card textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px;
+  border: 1px solid #2d7182;
+  border-radius: 7px;
+  color: #e7f7ff;
+  background: #07111f;
+  font: inherit;
+}
+
+.console-card textarea {
+  resize: vertical;
+}
+
+.console-card input:focus,
+.console-card select:focus,
+.console-card textarea:focus {
+  outline: 2px solid rgba(87, 230, 255, 0.35);
+  outline-offset: 1px;
+}
+
+.console-card button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  gap: 12px;
+}
+
+.console-error {
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid #ff6b81;
+  border-radius: 8px;
+  color: #ffdce2;
+  background: #52202a;
+}
+
+.console-success {
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid #2ed6a1;
+  border-radius: 8px;
+  color: #d8fff3;
+  background: #123d35;
+}
+
+.field-row--credentials {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.discover-button {
+  width: 100%;
+  border: 1px solid #49dff7 !important;
+  color: #bff7ff !important;
+  background: #10344a !important;
+}
+
+.database-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #285f70;
+  border-radius: 9px;
+  background: #091726;
+}
+
+.database-picker__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #bcd8e5;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.database-picker__header div {
+  display: flex;
+  gap: 6px;
+}
+
+.database-picker__header button {
+  padding: 5px 8px;
+  border: 1px solid #34758a;
+  color: #8eefff;
+  background: #10283b;
+  font-size: 12px;
+}
+
+.database-picker select[multiple] {
+  min-height: 96px;
+}
+
+.database-picker option {
+  padding: 7px;
+}
+
+.database-picker small {
+  color: #8eafbd;
+  font-weight: 400;
+}
+
+.mssql-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.console-card .checkbox-label {
+  flex-direction: row;
+  align-items: center;
+  font-weight: 500;
+}
+
+.console-card .checkbox-label input {
+  width: auto;
+}
+
+.history-link {
+  display: block;
+  margin: 20px 0 0 auto;
+  padding: 11px 16px;
+  border: 1px solid #2a7187;
+  border-radius: 8px;
+  color: #68eaff;
+  background: #112f42;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .agentic-console {
+    padding: 16px;
+  }
+
+  .agentic-console__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Data Types multi-select, Scan Type pill, Scan Paths chip input --- */
+.scan-type-pill {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #12203a;
+  border: 1px solid #2a4270;
+  color: #7dd3fc;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.entity-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.entity-chip {
+  border: 1px solid #2a4270;
+  background: #0f1a30;
+  color: #b6c7e8;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.entity-chip.selected {
+  background: #1c3a63;
+  border-color: #38bdf8;
+  color: #7dd3fc;
+}
+
+.entity-chip:hover {
+  border-color: #38bdf8;
+}
+
+.scan-paths-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #2a4270;
+  background: #0f1a30;
+}
+
+.scan-path-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #1c3a63;
+  color: #7dd3fc;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+}
+
+.scan-path-chip button {
+  background: transparent;
+  border: none;
+  color: #7dd3fc;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+}
+
+.scan-paths-input input {
+  flex: 1;
+  min-width: 140px;
+  border: none;
+  background: transparent;
+  outline: none;
+  color: inherit;
+  padding: 4px;
+}
+
+.field-hint {
+  color: #7c8db5;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+} 

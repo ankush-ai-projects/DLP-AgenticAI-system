@@ -1,0 +1,83 @@
+version: '3.8'
+
+# Copy docker/.env.example to docker/.env and fill in real values before
+# running this in anything beyond a throwaway local sandbox -- every
+# secret below was previously hardcoded directly in this file (committed
+# to source control) with a weak default password.
+
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-production}
+      - DEBUG=${DEBUG:-false}
+      - SECRET_KEY=${SECRET_KEY:?SECRET_KEY must be set -- see docker/.env.example}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-["http://localhost:3000"]}
+      - DATABASE_URL=postgresql://${POSTGRES_USER:?POSTGRES_USER must be set}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}@postgres:5432/${POSTGRES_DB:-dlp_db}
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - SYSTEM_SCAN_ALLOWED_ROOTS=/scan-data
+      - LANGGRAPH_CHECKPOINTER=postgres
+      - LANGGRAPH_POSTGRES_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-dlp_db}
+      - LANGGRAPH_STRICT_MSGPACK=true
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ../app:/app/app
+      - ../test_data:/scan-data:ro
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?POSTGRES_USER must be set}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}
+      POSTGRES_DB: ${POSTGRES_DB:-dlp_db}
+    # Not published to the host by default -- only the `api`/`celery`
+    # services (on the compose network) need to reach Postgres. Uncomment
+    # only for local debugging with an external DB client.
+    # ports:
+    #   - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    # Same reasoning as postgres above -- internal-only unless debugging.
+    # ports:
+    #   - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  celery:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    command: celery -A app.workers.celery_app worker --loglevel=info
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-production}
+      - DEBUG=${DEBUG:-false}
+      - SECRET_KEY=${SECRET_KEY:?SECRET_KEY must be set -- see docker/.env.example}
+      - DATABASE_URL=postgresql://${POSTGRES_USER:?POSTGRES_USER must be set}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD must be set}@postgres:5432/${POSTGRES_DB:-dlp_db}
+      - REDIS_URL=redis://redis:6379/0
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - SYSTEM_SCAN_ALLOWED_ROOTS=/scan-data
+      - LANGGRAPH_CHECKPOINTER=postgres
+      - LANGGRAPH_POSTGRES_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-dlp_db}
+      - LANGGRAPH_STRICT_MSGPACK=true
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ../app:/app/app
+      - ../test_data:/scan-data:ro
+
+volumes:
+  postgres_data:
+  redis_data:

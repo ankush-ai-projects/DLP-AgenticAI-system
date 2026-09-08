@@ -1,0 +1,19 @@
+Employee Information Document
+
+Name: Rahul Sharma
+Email: rahul.sharma@gmail.com
+Phone: +91 9876543210
+Aadhaar: 2345 6789 0123
+PAN: ABCDE1234F
+Credit Card: 4246537084905060
+
+Name: Priya Verma
+Email: priya.verma@yahoo.com
+Phone: 8765432109
+Address: 123 MG Road, Bangalore, Karnataka
+Aadhaar: 3456 7890 1234
+PAN: XYZAB5678C
+
+Confidential salary information:
+Rahul - Card ending 5060
+Priya - Card 5412345678901234
