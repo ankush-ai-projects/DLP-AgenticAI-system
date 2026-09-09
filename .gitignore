@@ -137,3 +137,5 @@ AI.pdf
 
 **/langgraph_checkpoints.sqlite-shm
 **/langgraph_checkpoints.sqlite-wal
+
+chroma_data/
